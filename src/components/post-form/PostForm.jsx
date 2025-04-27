@@ -22,12 +22,18 @@ const PostForm = ({ post }) => {
     const navigate = useNavigate()
     const userData = useSelector(state => state.auth.userData)
 
-    const submit = async (data) => {
+    const validateContentLength = (content) => {
+        if (content.length > 355) {
+            return content.substring(0, 355);
+        }
+        return content;
+    };
 
-        
+    const submit = async (data) => {
+        data.content = validateContentLength(data.content);
+
         if (post) {
             const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
-
 
             if (file) {
                 appwriteService.deleteFile(post.featuredImage);
@@ -55,8 +61,7 @@ const PostForm = ({ post }) => {
                 }
             }
         }
-
-    }
+    };
 
     const slugTransform = useCallback((value) => {
         if (value && typeof value === "string")
@@ -81,14 +86,14 @@ const PostForm = ({ post }) => {
     }, [watch, slugTransform, setValue]);
 
     return (
-        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+        <form onSubmit={handleSubmit(submit)} className="flex flex-wrap md:flex-nowrap">
             {loading && (
-                <div className="w-full flex items-center justify-center mb-4">
+                <div className="">
                     <Loader />
                 </div>
 
             )}
-            <div className="w-2/3 px-2">
+            <div className="w-full md:w-2/3 px-2">
             {errors.title && <span className="text-red-500">Title is required</span>}
                 <Input
                     label="Title :"
@@ -113,7 +118,7 @@ const PostForm = ({ post }) => {
                 {errors.content && <span className="text-red-500">Content is required</span>}
                 <RTE label="Content :" name="content" control={control} defaultValue={getValues("content")} />
             </div>
-            <div className="w-1/3 px-2">
+            <div className="w-full md:w-1/3 px-2">
                 {errors.image && <span className="text-red-500">Image is required</span>}
                 <Input
                     label="Featured Image :"
@@ -145,4 +150,4 @@ const PostForm = ({ post }) => {
     )
 }
 
-export default PostForm 
+export default PostForm

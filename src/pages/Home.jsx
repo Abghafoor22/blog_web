@@ -17,12 +17,12 @@ const Home = () => {
 
     if (posts.length === 0) {
         return (
-            <div className="w-full py-8 mt-4 text-center">
+            <div className="w-full py-8 mt-4 text-center min-h-[90vh] flex items-center justify-center">
                 <Container>
                     <div className="flex flex-wrap">
                         <div className="p-2 w-full">
                             <h1 className="text-2xl font-bold hover:text-gray-500">
-                            Login or create account to see posts
+                                Login or create account to see posts
                             </h1>
                             <p className="text-gray-500">No posts available</p>
                         </div>
@@ -33,8 +33,9 @@ const Home = () => {
     }
 
     return (
-        <div className='w-full py-8'>
+        <div className='w-full py-8 container mx-auto min-h-[90vh]'>
             <Container>
+                <h1 className='px-4  pb-3 font-bold text-xl'>Explore the latest Blogs</h1>
                 <div className='flex flex-wrap'>
                     {loading && (
                         <div className='w-full flex items-center justify-center'>
@@ -42,7 +43,8 @@ const Home = () => {
                         </div>
                     )}
                     {posts.map((post) => (
-                        <div key={post.$id} className='p-2 w-1/0 sm:w-1/2 md:w-1/3 lg:w-1/4'>
+                        <div key={post.$id} className='p-2 w-1/0 sm:w-1/2 md:w-1/3 lg:w-1/3'>
+
                             <PostCard {...post} />
                         </div>
                     ))}
