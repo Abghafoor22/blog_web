@@ -50,7 +50,7 @@ const Header = () => {
             <div className='mr-4'>
               <Link to="/" className='flex items-center gap-2'>
                 <Logo />
-                <h1 className='text-xl'>Awosome Blogs</h1>
+                <h1 className='text-xl'>Awesome Blogs</h1>
               </Link>
             </div>
             <ul className='hidden  md:flex ml-auto'>

@@ -9,7 +9,7 @@ const Footer = () => {
         <Logo/>
         <span className="ml-3 text-xl">Awsome Blogs</span>
       </a>
-      <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Awosome Blogs —
+      <p className="text-sm text-white sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">© 2020 Awesome Blogs —
         <a href="https://www.linkedin.com/in/abdul-ghafoor-kandhro/" className="text-white ml-1" rel="noopener noreferrer" target="_blank">Abdul GHafoor</a>
       </p>
       <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
